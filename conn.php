@@ -6,6 +6,7 @@ $pass ="";
 $db ="api_php_db";
 
 $con = new mysqli($host,$user,$pass,$db);
+
 if($con){
     echo "connected";
 }else{

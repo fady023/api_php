@@ -26,4 +26,14 @@ class employee
         $result = $res->fetch_assoc();
         return $result;
     }
+    public function store($data)
+    {
+        $name = $data["emp_name"];
+        $email = $data["emp_email"];
+        $phone = $data["emp_phone"];
+        $salary = $data["emp_salary"];
+
+        $insert = "insert into employees (name,email,phone,salary) values('$name','$email','$phone','$salary')";
+        $this->con->query($insert);
+    }
 }

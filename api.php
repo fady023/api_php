@@ -24,7 +24,12 @@ switch ($method) {
 
         case "POST" :
             if($end_point==="/emp"){
-                $data = json_decode(file_get_contents("php://input"));
-                var_dump($data);
+                $data = json_decode(file_get_contents('php://input'));
+               $emp = $x->store($data);
+               if($emp){
+                echo "data inserted";
+               }else{
+                echo "error in inserting ";
+               }
             }
 }

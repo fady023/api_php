@@ -28,17 +28,25 @@ class employee
     }
     public function store($data)
     {
+
         $name = $data["emp_name"];
         $email = $data["emp_email"];
         $phone = $data["emp_phone"];
         $salary = $data["emp_salary"];
 
-        $insert = "insert into employees (name,email,phone,salary) values('$name','$email','$phone','$salary')";
-        $res = $this->con->query($insert);
-        if($res){
-            return true;
-        }else{
+        $check_name = $this->con->query("select * from employees where name='$name'");
+        $rows = $check_name->num_rows;
+
+        if ($rows > 0) {
             return false;
+        } else {
+            $insert = "insert into employees (name,email,phone,salary) values('$name','$email','$phone',$salary)";
+            $res = $this->con->query($insert);
+            if ($res) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }

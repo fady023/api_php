@@ -21,4 +21,10 @@ switch ($method) {
             $emp2 = $x->show_emp($emp_id);
             echo json_encode($emp2);
         } break;
+
+        case "POST" :
+            if($end_point==="/emp"){
+                $data = json_decode(file_get_contents("php://input"));
+                var_dump($data);
+            }
 }

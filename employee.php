@@ -34,6 +34,11 @@ class employee
         $salary = $data["emp_salary"];
 
         $insert = "insert into employees (name,email,phone,salary) values('$name','$email','$phone','$salary')";
-        $this->con->query($insert);
+        $res = $this->con->query($insert);
+        if($res){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

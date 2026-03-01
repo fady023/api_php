@@ -32,4 +32,20 @@ switch ($method) {
                 echo "error in inserting ";
                }
             }break;
+
+              case "PUT" :
+            if(preg_match('/^\/emp\/(\d+)$/',$end_point,$matches)){
+                $id=$matches[1];
+                $data = json_decode(file_get_contents('php://input'),true);
+               $emp = $x->update($id,$data);
+              echo json_encode($emp);
+            }break;
+
+             case "DELETE" :
+                if(preg_match('/^\/emp\/(\d+)$/',$end_point,$matches)){
+                    $id = $matches[1];
+                    $emp = $x->destroy($id);
+                    echo json_encode($emp);
+                    
+                } 
 }

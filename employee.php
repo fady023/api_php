@@ -10,7 +10,7 @@ class employee
 
     public function get_emp()
     {
-        $sql = "select * from employees";
+        $sql = "select * from employees join departments on employees.dep_id=departments.id";
         $res = $this->con->query($sql);
         $emp = array();
         while ($row = $res->fetch_assoc()) {
@@ -48,5 +48,29 @@ class employee
                 return false;
             }
         }
+    }
+
+    public function destroy($id)
+    {
+        $sql = " delete from employees where id = '$id'";
+        $res = $this->con->query($sql);
+        if($res){return "deleted";}
+        else{return "not deleted";}
+
+    }
+
+    public function update($id,$data)
+    {
+        $name = $data["name"];
+        $email = $data["email"];
+        $phone = $data["phone"];
+        $salary = $data["salary"];
+
+        $sql = "update employees set name='$name',email='$email',phone='$phone',salary='$salary' where id='$id'";
+
+        $res = $this->con->query($sql);
+        if($sql){
+            return "updated";
+        }else{return "not updated";}
     }
 }

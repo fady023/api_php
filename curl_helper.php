@@ -1,6 +1,6 @@
 <?php
 
-function send_request($url, $method = 'GET', $data = [])
+function send_request($url, $method = 'GET')
 {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);

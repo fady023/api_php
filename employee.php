@@ -40,7 +40,7 @@ class employee
         if ($rows > 0) {
             return false;
         } else {
-            $insert = "insert into employees (name,email,phone,salary) values('$name','$email','$phone',$salary)";
+            $insert = "insert into employees (name,email,phone,salary,dep_id) values('$name','$email','$phone',$salary,1)";
             $res = $this->con->query($insert);
             if ($res) {
                 return true;

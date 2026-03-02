@@ -12,5 +12,5 @@ function send_request($url, $method = 'GET', $data = [])
     }
     $response = curl_exec($ch);
     curl_close($ch);
-    return json_encode(["data"=>$response]);
+    return $response ;
 }
